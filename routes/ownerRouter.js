@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const ownerModel = require('../models/owner-model');
-const { create } = require('../models/user-model');
-const c = require('config');
 
 router.get('/', (req, res) => {
     res.send('Onwer Router');

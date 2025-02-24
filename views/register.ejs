@@ -1,0 +1,17 @@
+<%- include('./partials/header') %>
+<body class="flex justify-center items-center h-screen flex-col">
+    <div class="flex flex-col bg-white p-10 rounded-lg border border-gray-300">
+        <h2 class="text-4xl font-bold">Welcome to <span class="text-blue-400">Scatch</span></h2>
+        <p class="font-bold">Create your Account</p>
+        <form id="form" action="" method="" class="flex flex-col mt-4">
+            <input type="text" name="fullname" placeholder="Full Name" class="border border-gray-300 p-2 rounded-lg mt-2 outline-blue-500" required>
+            <input type="text" id="email" name="email" placeholder="Email" class="border border-gray-300 p-2 rounded-lg mt-2 outline-blue-500" required>
+            <span id="emailError" class="text-red-500 mt-2"></span>
+            <input type="password" name="password" placeholder="Password" class="border border-gray-300 p-2 rounded-lg mt-2 outline-blue-500" required>
+            <button class="bg-blue-500 py-2 mt-4 rounded-full text-white text-xl ease-in duration-200 cursor-pointer hover:bg-blue-700">Create My Account</button>
+        </form>
+    </div>
+
+    <script src="/javascripts/script.js"></script>
+</body>
+</html>
