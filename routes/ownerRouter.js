@@ -1,26 +1,40 @@
 const express = require('express');
 const router = express.Router();
 const ownerModel = require('../models/owner-model');
+const productModel = require('../models/product-model');
+const { registerOwner, loginOwner } = require('../controllers/ownerController');
+const { isOwnerLoggedIn } = require('../middlewares/isOwnerLoggedIn');
 
-router.get('/', (req, res) => {
-    res.send('Onwer Router');
+router.get('/register', async (req, res) => {
+    let error = req.flash('error');
+    let owners = await ownerModel.find();
+    res.render('ownerRegister', { error, owners });
 });
 
-if (process.env.NODE_ENV === 'development') {
-    router.post('/create', async (req, res) => {
-        let owners = await ownerModel.find();
-        if (owners.length > 0) {
-            return res.status(500).send("You don't have permission to create a new owner");
-        } else {
-            let {fullname, email, password} = req.body;
-            let createdOwner = new ownerModel({
-                fullname,
-                email,
-                password
-            });
-            res.status(201).send(createdOwner);
-        }
-    });
-}
+router.get('/login', async (req, res) => {
+    let error = req.flash('error');
+    let owners = await ownerModel.find();
+    res.render('ownerLogin', { error, owners });
+});
+
+router.get('/admin', isOwnerLoggedIn, async (req, res) => {
+    const products = await productModel.find();
+    res.render('admin', { products });
+});
+
+router.get('/create', isOwnerLoggedIn, (req, res) => {
+    let success = req.flash('success');
+    res.render('createProducts', { success });
+});
+
+router.get('/delete/:id', isOwnerLoggedIn, async (req, res) => {
+
+    let product = await productModel.findById(req.params.id);
+    await product.deleteOne();
+    return res.redirect('/owner/admin');
+});
+
+router.post('/registered', registerOwner);
+router.post('/logined', loginOwner);
 
 module.exports = router;

@@ -1,0 +1,40 @@
+<%- include('./partials/header') %>
+    <div class="w-full h-screen flex items-start">
+        <div class="w-[15%] flex h-screen flex-col items-start bg-zinc-300 px-10 py-10 fixed top-12 left-0 z-4">
+            <div class="flex flex-col">
+                <a class="block w-fit mb-2 hover:underline" href="/owner/admin">All Products</a>
+                <a class="block w-fit mb-2 hover:underline" href="/owner/create">Create new product</a>
+            </div>
+        </div>
+        <div class="w-[85%] flex flex-col gap-5 h-full py-10 px-10 absolute right-0">
+            <div class="flex items-start gap-5 flex-wrap">
+                <% products.forEach(function(product){ %>
+                    <div class="w-56 ">
+                        <div class="w-full h-52 flex items-center justify-center bg-[<%= product.bgcolor %>]">
+                            <img class="h-[12rem]" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
+                                alt="">
+                        </div>
+                        <div
+                            class="flex justify-between bg-[<%= product.panelcolor %>] items-center px-4 py-4 text-[<%= product.textcolor %>]">
+                            <div>
+                                <h3>
+                                    <%= product.name %>
+                                </h3>
+                                <h4>
+                                    ₹ <%= product.price %>
+                                </h4>
+                            </div>
+                            <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white text-black"
+                                href="/owner/delete/<%= product._id %>">
+                                <i class="ri-subtract-line"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+    </html>

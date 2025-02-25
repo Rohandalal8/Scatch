@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('register');
+    let error = req.flash('error');
+    res.render('register', { error });
 });
 
 module.exports = router;

@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scatch</title>
     <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
+
+<body class="font-['helvetica_now_display']">
+    <div class="h-12">
+        <nav class="w-full flex justify-between items-center px-5 py-3 fixed top-0 left-0 bg-gray-200 z-50">
+            <div class="text-2xl font-bold text-blue-400">Scatch</div>
+            <div class="flex gap-5">
+                <a href="/owner/admin" class="hover:border rounded p-1">Add items</a>
+                <a href="/" class="hover:border rounded p-1">Shop</a>
+                <a href="/cart" class="hover:border rounded p-1">Cart</a>
+                <a href="/login" class="hover:border rounded p-1">Login</a>
+                <a href="/register" class="hover:border rounded p-1">Sign Up</a>
+                <a href="/user/logout" class="text-red-500 hover:border rounded p-1">Logout</a>
+            </div>
+        </nav>
+    </div>
