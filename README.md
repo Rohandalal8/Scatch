@@ -6,7 +6,7 @@ Scatch is a web application for managing products and user interactions. It incl
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/Rohandalal8/scatch.git
+   git clone https://github.com/Rohandalal8/Scatch.git
 
 2. Navigate to the project directory:
    cd scatch
